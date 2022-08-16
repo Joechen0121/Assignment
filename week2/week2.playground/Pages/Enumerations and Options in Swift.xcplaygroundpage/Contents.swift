@@ -13,23 +13,23 @@ enum Gasoline: String {
     case oil95 = "95"
     case oil98 = "98"
     case diesel = "diesel"
-}
 
-func getPrice(oilType: Gasoline) -> Float{
-    
-    switch oilType {
-    case .oil92:
-        return Price.oil92Price
-    case .oil95:
-        return Price.oil95Price
-    case .oil98:
-        return Price.oil98Price
-    case .diesel:
-        return Price.dieselPrice
+
+    func getPrice() -> Float{
+        
+        switch self {
+        case .oil92:
+            return Price.oil92Price
+        case .oil95:
+            return Price.oil95Price
+        case .oil98:
+            return Price.oil98Price
+        case .diesel:
+            return Price.dieselPrice
+        }
     }
 }
 
-getPrice(oilType: .oil92)
 Gasoline.oil92.rawValue
 
 //Associated value: 可將與成員值有關連的資料儲存起來（可儲存任何自定類型的關聯值）
@@ -60,10 +60,7 @@ getPrice(of: test92)
 
 //MARK: - Question 2
 class Pet {
-    /*
-     使用var, let皆可，差別在於
-     如果使用let，初始化後則無法再重新給予新值，var則可以
-     */
+    
     let name: String
     
     init(name: String) {
@@ -72,14 +69,15 @@ class Pet {
 }
 
 class People {
-    /*
-     使用var，因現狀況可能有值或是nil
-     若使用let，則需要再加入initializer
-     */
+
     var pet: Pet?
+    
+    init(pet: Pet?) {
+        self.pet = pet
+    }
 }
 
-let people = People()
+let people = People(pet: Pet(name: "Hi"))
 func unwrapMethodOne(for people: People) {
     guard let name = people.pet?.name else {
         print("Unable to retrieve pet name")
@@ -91,7 +89,7 @@ func unwrapMethodOne(for people: People) {
 unwrapMethodOne(for: people)
 
 
-let peopleTwo = People()
+let peopleTwo = People(pet: Pet(name: "Hello"))
 func unwrapMethodTwo(for people: People) {
     if let name = people.pet?.name {
         print("pet name is \(name)")
