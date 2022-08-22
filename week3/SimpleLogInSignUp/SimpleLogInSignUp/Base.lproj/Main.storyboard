@@ -28,8 +28,8 @@
                                     <constraint firstAttribute="width" constant="150" id="F3f-sU-2Ms"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Log In"/>
-                                    <segment title="Sign Up"/>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
                                 </segments>
                                 <connections>
                                     <action selector="logInSignUpSegment:" destination="BYZ-38-t0r" eventType="valueChanged" id="5aB-xt-1g2"/>

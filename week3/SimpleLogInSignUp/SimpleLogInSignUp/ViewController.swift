@@ -28,9 +28,9 @@ class ViewController: UIViewController {
 
         switch index {
         case SegmentStatus.logIn.rawValue:
-            configureLogInView()
+            setLogInView()
         case SegmentStatus.signUp.rawValue:
-            configureSignUpView()
+            setSignUpView()
         default:
             print("Unknown index: \(index)")
         }
@@ -87,7 +87,18 @@ class ViewController: UIViewController {
     
     
     //MARK: - Configure View function
-    func configureLogInView() {
+    func configurelogInSignUpSegment() {
+        
+        K.SegmentInfo.title.enumerated().forEach {
+            logInSignUpSegment.setTitle($1, forSegmentAt: $0)
+        }
+
+        logInSignUpSegment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
+        logInSignUpSegment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
+        logInSignUpSegment.selectedSegmentTintColor = .black
+    }
+    
+    func setLogInView() {
         checkLabel.textColor = .darkGray
         
         checkTextField.text = ""
@@ -98,7 +109,7 @@ class ViewController: UIViewController {
         checkTextField.backgroundColor = .darkGray
     }
     
-    func configureSignUpView() {
+    func setSignUpView() {
         checkLabel.textColor = .black
         
         accountTextField.text = ""
@@ -110,6 +121,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        configurelogInSignUpSegment()
     }
 }
 

@@ -12,4 +12,7 @@ struct K {
         static let account = "appworks_school@gmail.com"
         static let password = 1234
     }
+    struct SegmentInfo {
+        static let title = ["log In", "Sign Up"]
+    }
 }
