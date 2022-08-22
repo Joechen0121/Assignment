@@ -14,8 +14,6 @@ class ViewController: UIViewController {
         case signUp
     }
     
-    var segmentStatus: Int = SegmentStatus.logIn.rawValue // Init view = logIn status
-    
     @IBOutlet weak var logInSignUpSegment: UISegmentedControl!
     
     @IBOutlet weak var accountTextField: UITextField!
@@ -27,11 +25,7 @@ class ViewController: UIViewController {
     @IBAction func logInSignUpSegment(_ sender: UISegmentedControl) {
         
         let index = sender.selectedSegmentIndex
-        
-        // 1. Record status
-        segmentStatus = index
-        
-        // 2. Configure view
+
         switch index {
         case SegmentStatus.logIn.rawValue:
             configureLogInView()
@@ -44,16 +38,19 @@ class ViewController: UIViewController {
     
     @IBAction func buttonPressed(_ sender: Any) {
         
-        switch segmentStatus {
+        let currentIndex = logInSignUpSegment.selectedSegmentIndex
+        
+        switch currentIndex {
         case SegmentStatus.logIn.rawValue:
             checkLogInTextField()
         case SegmentStatus.signUp.rawValue:
             checkSignUpTextField()
         default:
-            print("Unknown status: \(segmentStatus)")
+            print("Unknown status: \(currentIndex)")
         }
     }
     
+    //MARK: - Check Text field function
     func checkLogInTextField() {
         if accountTextField.text!.isEmpty {
             showAlert(title: "Error", message: "Account should not be empty.")
@@ -88,15 +85,17 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    //MARK: - Configure View function
     func configureLogInView() {
-        checkLabel.textColor = .red
+        checkLabel.textColor = .darkGray
         
         checkTextField.text = ""
         accountTextField.text = ""
         passwordTextField.text = ""
         
         checkTextField.isUserInteractionEnabled = false
-        checkTextField.backgroundColor = .red
+        checkTextField.backgroundColor = .darkGray
     }
     
     func configureSignUpView() {
@@ -106,7 +105,6 @@ class ViewController: UIViewController {
         passwordTextField.text = ""
         
         checkTextField.isUserInteractionEnabled = true
-        checkTextField.tintColor = .white
         checkTextField.backgroundColor = .white
     }
     
