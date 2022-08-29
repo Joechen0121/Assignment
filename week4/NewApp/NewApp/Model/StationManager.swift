@@ -11,7 +11,7 @@ protocol StationManagerDelegate {
     func updateStation(station: StationData)
 }
 
-struct StationManager {
+class StationManager {
     
     let url: String = "https://stations-98a59.firebaseio.com/practice.json"
     

@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var stationNameLabel: UILabel!
     @IBOutlet weak var stationAddressLabel: UILabel!
     
-    var stationManager = StationManager()
+    let stationManager = StationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
